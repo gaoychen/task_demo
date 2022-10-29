@@ -1,0 +1,9 @@
+0:0:0:0:0:0:0:1 - - [29/Oct/2022:14:14:04 +0800] "GET /FirstTask HTTP/1.1" 302 - http-bio-8080-exec-1 0
+0:0:0:0:0:0:0:1 - - [29/Oct/2022:14:14:04 +0800] "GET /FirstTask/ HTTP/1.1" 404 971 http-bio-8080-exec-3 22
+0:0:0:0:0:0:0:1 - - [29/Oct/2022:14:14:04 +0800] "GET /favicon.ico HTTP/1.1" 404 - http-bio-8080-exec-4 0
+0:0:0:0:0:0:0:1 - - [29/Oct/2022:14:14:07 +0800] "GET /FirstTask/login.html HTTP/1.1" 304 - http-bio-8080-exec-5 9
+0:0:0:0:0:0:0:1 - - [29/Oct/2022:14:14:09 +0800] "GET /FirstTask/register.html HTTP/1.1" 200 789 http-bio-8080-exec-6 3
+0:0:0:0:0:0:0:1 - - [29/Oct/2022:14:14:13 +0800] "POST /FirstTask/loginServlet HTTP/1.1" 200 21 http-bio-8080-exec-7 512
+0:0:0:0:0:0:0:1 - - [29/Oct/2022:14:14:19 +0800] "POST /FirstTask/loginServlet HTTP/1.1" 200 664 http-bio-8080-exec-8 128
+0:0:0:0:0:0:0:1 - - [29/Oct/2022:14:14:21 +0800] "GET /FirstTask/administrator.html HTTP/1.1" 200 569 http-bio-8080-exec-9 11
+0:0:0:0:0:0:0:1 - - [29/Oct/2022:14:14:25 +0800] "POST /FirstTask/administratorServlet HTTP/1.1" 200 933 http-bio-8080-exec-10 79

@@ -7,6 +7,7 @@ public class Student {
     private String number;
     private String major;
     private String password;
+    private String progress;
 
     public int getId() {
         return id;
@@ -56,6 +57,14 @@ public class Student {
         this.password = password;
     }
 
+    public String getProgress() {
+        return progress;
+    }
+
+    public void setProgress(String progress) {
+        this.progress = progress;
+    }
+
     @Override
     public String toString() {
         return "学生信息{" +
@@ -64,6 +73,8 @@ public class Student {
                 ", 性别='" + gender + '\'' +
                 ", 学号='" + number + '\'' +
                 ", 专业='" + major + '\'' +
+                ", 密码='" + password + '\'' +
+                ", 进度='" + progress + '\'' +
                 '}';
     }
 }

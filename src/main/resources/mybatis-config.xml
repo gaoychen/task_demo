@@ -19,6 +19,7 @@
 
     <mappers>
         <mapper class="dao.StudentMapper"/>
+        <mapper class="dao.AdministratorMapper"/>
     </mappers>
 
 </configuration>

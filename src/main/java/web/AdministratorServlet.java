@@ -1,55 +1,41 @@
 package web;
 
+import dao.AdministratorMapper;
 import dao.StudentMapper;
 import org.apache.ibatis.io.Resources;
 import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
 import org.apache.ibatis.session.SqlSessionFactoryBuilder;
+import pojo.Administrator;
 import pojo.Student;
 
 import javax.servlet.*;
-import javax.servlet.annotation.*;
 import javax.servlet.http.*;
-import java.io.File;
+import javax.servlet.annotation.*;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.PrintWriter;
-import java.nio.file.Files;
+import java.util.List;
 
 
-@WebServlet("/registerServlet")
-public class RegisterServlet extends HttpServlet {
+@WebServlet("/administratorServlet")
+public class AdministratorServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        //接收学号和密码
-        String name = request.getParameter("name");
-        String gender = request.getParameter("gender");
+        //接收账号和密码
         String number = request.getParameter("number");
-        String major = request.getParameter("major");
         String password = request.getParameter("password");
 
         //准备MyBatis
         InputStream inputStream = Resources.getResourceAsStream("mybatis-config.xml");
         SqlSessionFactory sqlSessionFactory = new SqlSessionFactoryBuilder().build(inputStream);
         SqlSession sqlSession = sqlSessionFactory.openSession();
+        AdministratorMapper administratorMapper = sqlSession.getMapper(AdministratorMapper.class);
         StudentMapper studentMapper = sqlSession.getMapper(StudentMapper.class);
 
-        //构造学生对象
-        Student student = new Student();
-        student.setName(name);
-        student.setGender(gender);
-        student.setNumber(number);
-        student.setMajor(major);
-        student.setPassword(password);
-
-        //插入学生信息
-        studentMapper.updateId();
-        int result = studentMapper.insertStudent(student);
-
-        //准备对应的Jupyter Notebook资源
-        File source = new File("/opt/jupyter/Test.ipynb");
-        File dest = new File("/opt/jupyter/"+student.getNumber()+".ipynb");
-        Files.copy(source.toPath(),dest.toPath());
+        //调用方法查找数据库是否有这个管理员,并生成学生列表
+        Administrator administrator = administratorMapper.selectAdministrator(number, password);
+        List<Student> students = studentMapper.selectAll();
 
         //释放资源
         sqlSession.commit();
@@ -58,10 +44,12 @@ public class RegisterServlet extends HttpServlet {
         //逻辑判断
         response.setContentType("text/html;charset=utf-8");
         PrintWriter writer = response.getWriter();
-        if(result > 0) {
-            response.sendRedirect("login.html");
+        if(administrator != null) {
+            request.setAttribute("students",students);
+            request.setAttribute("administrator",administrator);
+            request.getRequestDispatcher("AdministratorInformation.jsp").forward(request,response);
         } else {
-            writer.write("请补充完整信息");
+            writer.write("账号或密码错误");
         }
     }
 

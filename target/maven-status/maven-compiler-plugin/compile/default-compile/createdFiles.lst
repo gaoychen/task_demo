@@ -1,4 +1,7 @@
 web\RegisterServlet.class
+web\AdministratorServlet.class
+pojo\Administrator.class
+dao\AdministratorMapper.class
 pojo\Student.class
 web\LoginServlet.class
 dao\StudentMapper.class
