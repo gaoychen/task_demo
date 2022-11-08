@@ -12,18 +12,18 @@
 
 <html>
 <head>
-    <title>后台管理页面</title>
+    <title>Administrator</title>
 </head>
 <body>
 <div id="informationDiv">
-    <h1 align="center">所有学生信息列表</h1>
+    <h1 align="center">All Students</h1>
     <table border="1" style="margin:auto" width="60%">
         <tr>
-            <th>姓名</th>
-            <th>性别</th>
-            <th>学号</th>
-            <th>专业</th>
-            <th>进度</th>
+            <th>Name</th>
+            <th>Gender</th>
+            <th>Number</th>
+            <th>Major</th>
+            <th>Progress</th>
         </tr>
 <%
     for (int i = 0; i < students.size(); i++){

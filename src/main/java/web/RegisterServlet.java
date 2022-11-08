@@ -47,9 +47,12 @@ public class RegisterServlet extends HttpServlet {
         int result = studentMapper.insertStudent(student);
 
         //准备对应的Jupyter Notebook资源
-        File source = new File("/opt/jupyter/Test.ipynb");
-        File dest = new File("/opt/jupyter/"+student.getNumber()+".ipynb");
-        Files.copy(source.toPath(),dest.toPath());
+        File sourceFolder = new File("/opt/jupyter/source");
+        File destFolder = new File("/opt/jupyter/"+student.getNumber());
+        File sourceFile = new File("/opt/jupyter/source/Test.ipynb");
+        File destFile = new File("/opt/jupyter/"+student.getNumber()+"/"+student.getNumber()+".ipynb");
+        Files.copy(sourceFolder.toPath(),destFolder.toPath());
+        Files.copy(sourceFile.toPath(),destFile.toPath());
 
         //释放资源
         sqlSession.commit();
@@ -61,7 +64,7 @@ public class RegisterServlet extends HttpServlet {
         if(result > 0) {
             response.sendRedirect("login.html");
         } else {
-            writer.write("请补充完整信息");
+            writer.write("Please complete your information");
         }
     }
 

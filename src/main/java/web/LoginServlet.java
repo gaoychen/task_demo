@@ -43,7 +43,7 @@ public class LoginServlet extends HttpServlet {
             request.setAttribute("student",student);
             request.getRequestDispatcher("information.jsp").forward(request,response);
         } else {
-            writer.write("学号或密码错误");
+            writer.write("Wrong student number or password");
         }
     }
 

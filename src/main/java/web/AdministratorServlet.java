@@ -49,7 +49,7 @@ public class AdministratorServlet extends HttpServlet {
             request.setAttribute("administrator",administrator);
             request.getRequestDispatcher("AdministratorInformation.jsp").forward(request,response);
         } else {
-            writer.write("账号或密码错误");
+            writer.write("Wrong administrator number or password");
         }
     }
 
