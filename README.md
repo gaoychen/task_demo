@@ -29,11 +29,15 @@ Decompress：
 Please refer to <https://www.cnblogs.com/leecy/p/16328065.html>.
 
 ## 4.Deployment process
-Get the project code locally with the git clone command, log in to MySQL to create a new database named first_task, then use the db.sql file to configure the database by typing in the terminal:  
+### 4.1
+Get the project code locally with the git clone command, log in to MySQL to create a new database named first_task, then use the "db.sql" file to configure the database by typing in the terminal:  
 ```mysql -uroot -p first_task<db.sql```  
-Place the FirstTask file in the webapps directory in the Tomcat, remember to change MySQL password in db.properties, then open port 8080 and 8888:  
+### 4.2
+Move file "FirstTask" to "webapps" in the "tomcat" directory, remember to change MySQL username and password in "db.properties" in "FirstTask", then open port 8080 and 8888:  
 ```firewall-cmd --permanent --add-port=8080/tcp```  
 ```firewall-cmd --permanent --add-port=8888/tcp```  
-Run the startup script in Tomcat's bin directory to start Tomcat:  
+### 4.3
+Run the startup script in tomcat's bin directory to start Tomcat:  
 ```./startup.sh```  
-You can access the project by visiting localhost:8080/FirstTask/login.html in your browser.
+### 4.4
+You can access the project by visiting "localhost:8080/FirstTask/login.html" in your browser.
